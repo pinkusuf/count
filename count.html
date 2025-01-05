@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Countdown</title>
+    <style>
+        body {
+            font-family: 'Arial, sans-serif';
+            text-align: center;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4, #fbc2eb, #a1c4fd, #c2e9fb);
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            font-size: 3.5em;
+            color: #ff6b6b;
+            margin-top: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        p {
+            font-size: 1.5em;
+            margin: 10px 0;
+            color: #fff;
+        }
+        #countdown {
+            font-size: 3em;
+            font-weight: bold;
+            color: #ffcc00;
+            margin: 20px 0;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        .message {
+            margin-top: 30px;
+            font-size: 1.3em;
+            color: black;
+            font-family: 'Lucida Handwriting', cursive;
+            background: rgba(144, 139, 139, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            display: inline-block;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+        footer {
+            margin-top: 50px;
+            font-size: 0.9em;
+            color: #fff;
+        }
+
+        /* Media Queries for responsiveness */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            p {
+                font-size: 1.2em;
+            }
+            #countdown {
+                font-size: 2.5em;
+            }
+            .message {
+                font-size: 1.1em;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2em;
+            }
+            p {
+                font-size: 1em;
+            }
+            #countdown {
+                font-size: 2em;
+            }
+            .message {
+                font-size: 1em;
+                padding: 10px;
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>🎉 Happy Birthday Countdown 🎉</h1>
+    <p>Counting down to celebrate the most amazing person I know!</p>
+    <div id="countdown"></div>
+    <div class="message">
+        <p>Dear Bestie,</p>
+        <p>For over 10 years, you’ve been more than just my friend; you’ve been my rock, my joy, and my greatest treasure. As we count down to your special day, I just want you to know how lucky I feel to have you in my life.</p>
+        <p>Here’s to all the laughter, adventures, and unforgettable moments we’ve shared—and to the many more to come. I can’t wait to celebrate YOU and everything that makes you so extraordinary. ❤️</p>
+        <p>Happy (almost) Birthday, my forever best friend! 🥳</p>
+    </div>
+    <footer>
+        <p>With love, always. 💖</p>
+    </footer>
+
+    <script>
+        const targetDate = new Date("January 21, 2025 00:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const timeLeft = targetDate - now;
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML =
+                `${days} Days : ${hours} Hours : ${minutes} Minutes : ${seconds} Seconds`;
+
+            if (timeLeft < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById("countdown").innerHTML = "🎂 Happy Birthday! 🎉";
+            }
+        }
+
+        const countdownInterval = setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
